@@ -20,7 +20,6 @@ public class pdfFunction {
 				PDDocument document = PDDocument.load(new File(PDFpath));
 				PDPageTree list = document.getPages();
 			    for (PDPage page : list) {
-//			    	String font = page.getResources().getFonts(); need to check
 			        PDResources pdResources = page.getResources();
 			        for (COSName c : pdResources.getXObjectNames()) {
 			            PDXObject o = pdResources.getXObject(c);
