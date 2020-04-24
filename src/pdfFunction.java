@@ -13,7 +13,7 @@ import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.apache.pdfbox.pdmodel.graphics.PDXObject;
 
 public class pdfFunction {
-	
+	         
 		
 		public static void GetImg(String PDFpath, String Outputpath) {
 			 try {
