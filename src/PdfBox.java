@@ -3,6 +3,8 @@
 import java.io.File;
 
 import java.io.IOException;
+import java.util.List;
+
 //import org.apache.pdfbox.text.PDFTextStripper;
 import javax.imageio.ImageIO;
 //import org.apache.pdfbox.pdmodel.PDDocumentCatalog;
@@ -13,36 +15,47 @@ import javax.imageio.ImageIO;
 import org.apache.pdfbox.cos.COSName;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.PDPageTree;
 import org.apache.pdfbox.pdmodel.PDResources;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.apache.pdfbox.pdmodel.graphics.PDXObject;
 import org.apache.pdfbox.text.PDFTextStripper;
+import org.apache.pdfbox.text.TextPosition;
 public class PdfBox {
 
 	public static void main(String[] args) throws IOException {
-//		// TODO Auto-generated method stub
-//		System.out.println("Pruthvi");
+
 //		
 //		
 	
 	//public static void testPDFBoxExtractImages() throws Exception {
 	    PDDocument document = PDDocument.load(new File("D:/pruthvi/t.pdf"));
-	    PDFTextStripper stripper = new PDFTextStripper();
+//	    PDFTextStripper stripper = new GetCharLocationAndSize();
+//	    stripper.setSortByPosition( true );
+//	    stripper.setStartPage( 0 );
+//	    stripper.setEndPage( document.getNumberOfPages() );
+//	    PDFTextStripper stripper = new PDFTextStripper();
+	    PDPage textPage = document.getPage(2);
+	    PDPageContentStream contentStream = new PDPageContentStream(document, textPage,PDPageContentStream.AppendMode.APPEND, false);
+	    contentStream.beginText();
+	    contentStream.setFont(PDType1Font.TIMES_ROMAN, 12);
+	    contentStream.newLineAtOffset(0, 0);
+	    contentStream.showText("Gibots");
+	    contentStream.endText();
+	    contentStream.close();
+	    document.save("D:/outputIMG/output1.pdf");
 	    //System.out.println(stripper.getFonts());
-	   // String font = stripper.getFonts(document); need to test
+//	    String font = stripper.getFonts(document); need to test
 //	    String text = stripper.getText(document);
-	    //PDFTextStripper stripper = new PDFTextStripper();
-        //String text = stripper.getText(document);
+	    
+//        String text1 = stripper.getText(document);
+//        for (TextPosition text : textPositions) {
+//            System.out.println(text.getUnicode()+ " [(X=" + text.getXDirAdj() + ",Y=" +
+//                    text.getYDirAdj() + ") height=" + text.getHeightDir() + " width=" +
+//                    text.getWidthDirAdj() + "]");
+//        }
 //        System.out.println("test is hear->>"+text);
-//	    PDDocumentCatalog catalog = document.getDocumentCatalog();
-//	    PDMetadata metadata = catalog.getMetadata();
-//	    
-//	    System.out.println("meta data is"+metadata); // got null
-//	    try(InputStream is = metadata.createInputStream();
-//        InputStreamReader isr = new InputStreamReader(is);
-//        BufferedReader br = new BufferedReader(isr)) {
-//    
-//    br.lines().forEach(System.out::println);}
 	    PDPageTree list = document.getPages();
 	    for (PDPage page : list) {
 //	    	String font = page.getResources().getFonts(); need to check
@@ -55,8 +68,15 @@ public class PdfBox {
 	            }
 	        }
 	    }
+//	    document.close();
 	}
 
 //}
-
+//	 protected void writeString(String string, List<TextPosition> textPositions) throws IOException {
+//	        for (TextPosition text : textPositions) {
+//	            System.out.println(text.getUnicode()+ " [(X=" + text.getXDirAdj() + ",Y=" +
+//	                    text.getYDirAdj() + ") height=" + text.getHeightDir() + " width=" +
+//	                    text.getWidthDirAdj() + "]");
+//	        }
+//	    }
 }
