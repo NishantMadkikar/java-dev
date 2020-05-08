@@ -39,7 +39,7 @@ public class GetCharLocationAndSize extends PDFTextStripper {
             if( document != null ) {
                 document.close();
             }
-        }
+        }  
     }
     /**
      * Override the default functionality of PDFTextStripper.writeString()

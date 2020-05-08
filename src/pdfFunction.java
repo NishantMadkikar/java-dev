@@ -57,7 +57,7 @@ public class pdfFunction {
 		}
 		
 		public static void main(String[] args) throws IOException {
-		
+		  
 		//insert("D:/pruthvi/t.pdf","D:/outputIMG/output1.pdf","Roots",1,10,0);
 			
 		//GetImg("D:/pruthvi/t.pdf","D:/outputIMG/");
