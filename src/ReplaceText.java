@@ -82,7 +82,7 @@ public final class ReplaceText
 //        if (StringUtils.isEmpty(searchString) || StringUtils.isEmpty(replacement)) {
 //            return document;
 //        }
-          
+            
         for ( PDPage page : document.getPages() )
         {
             PDFStreamParser parser = new PDFStreamParser(page);
