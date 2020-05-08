@@ -20,7 +20,6 @@ public class pdfFunction {
 				PDDocument document = PDDocument.load(new File(PDFpath));
 				PDPageTree list = document.getPages();
 			    for (PDPage page : list) {
-//			    	String font = page.getResources().getFonts(); need to check
 			        PDResources pdResources = page.getResources();
 			        for (COSName c : pdResources.getXObjectNames()) {
 			            PDXObject o = pdResources.getXObject(c);
@@ -59,8 +58,19 @@ public class pdfFunction {
 		
 		public static void main(String[] args) throws IOException {
 		
-		insert("D:/pruthvi/t.pdf","D:/outputIMG/output1.pdf","Gibots",0,0,0);
-		GetImg("D:/pruthvi/t.pdf","D:/outputIMG/");
+		//insert("D:/pruthvi/t.pdf","D:/outputIMG/output1.pdf","Roots",1,10,0);
+			
+		//GetImg("D:/pruthvi/t.pdf","D:/outputIMG/");
+			
+		GetCharLocationAndSize charInfo = new GetCharLocationAndSize();
+		String info[] = {"D:/pruthvi/t.pdf","D:/pruthvi/j.json"};
+		charInfo.getCharInfo(info);
+		
+		
+		ReplaceText deleteData = new ReplaceText();
+		String deleteInfo[] = {"D:/pruthvi/t.pdf","delete string","replace string","D:/pruthvi/output.pdf"};
+		deleteData.deleteData(deleteInfo);
+		
 		}
 		
 }
